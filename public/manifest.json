@@ -1,0 +1,46 @@
+{
+  "name": "RailGaadi — Live Train Tracker",
+  "short_name": "RailGaadi",
+  "description": "Track any Indian train in real-time. Live location, interactive maps, weather, analytics and nearby landmarks.",
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#0A0E1A",
+  "theme_color": "#007AFF",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["travel", "navigation", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "1x1",
+      "type": "image/x-icon",
+      "form_factor": "narrow",
+      "label": "RailGaadi Home Screen"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Track Mumbai Rajdhani",
+      "short_name": "Rajdhani",
+      "description": "Track train #12951 live",
+      "url": "/train/12951",
+      "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+    },
+    {
+      "name": "Track Vande Bharat",
+      "short_name": "Vande Bharat",
+      "description": "Track train #22436 live",
+      "url": "/train/22436",
+      "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+    }
+  ]
+}

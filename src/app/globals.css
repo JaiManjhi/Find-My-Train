@@ -1,26 +1,231 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* =============================================
+   PRECISION RAIL DESIGN SYSTEM
+   =============================================
+   Level 0 (Base):    #0A0E1A — Global canvas
+   Level 1 (Surface): #161B22 — Cards, navbars
+   Level 2 (Hover):   #1F2937 — Interactive/input
+   Accent (Blue):     #007AFF — Actions, highlights
+   Accent (Amber):    #FFB000 — Delays, warnings
+   Success (Green):   #10B981 — On Time status
+   Error (Red):       #EF4444 — Cancelled / severe delay
+   Border:            #1F2937 — All 1px solid outlines
+   ============================================= */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-base:       #0A0E1A;
+    --bg-surface:    #161B22;
+    --bg-hover:      #1F2937;
+    --border:        #1F2937;
+    --border-active: #007AFF;
+    --text-primary:  #F8FAFC;
+    --text-secondary:#94A3B8;
+    --text-muted:    #4B5563;
+    --accent-blue:   #007AFF;
+    --accent-amber:  #FFB000;
+    --accent-green:  #10B981;
+    --accent-red:    #EF4444;
+    /* legacy shim – avoids breaking any remaining references */
+    --apple-blue:    #007AFF;
+    --apple-green:   #10B981;
+    --apple-amber:   #FFB000;
+    --apple-red:     #EF4444;
+  }
+
+  html, body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Surface & Card primitives ─────────────────── */
+.pr-surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.pr-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.pr-card:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg-hover);
+}
+
+/* Shim: old glass-* class names now resolve to flat equivalents */
+.glass-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.glass-card:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg-hover);
+}
+
+.glass-header {
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Inputs ─────────────────────────────────────── */
+.pr-input {
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease;
+}
+
+.pr-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+}
+
+/* ─── Status badge chips ─────────────────────────── */
+.badge-on-time {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid #10B981;
+  color: #10B981;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-delayed {
+  background: rgba(255, 176, 0, 0.12);
+  border: 1px solid #FFB000;
+  color: #FFB000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.badge-cancelled {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid #EF4444;
+  color: #EF4444;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* ─── Buttons ────────────────────────────────────── */
+.btn-primary {
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-blue);
+}
+
+/* ─── Mono label helper ──────────────────────────── */
+.mono-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── Progress bar ───────────────────────────────── */
+.pr-progress-track {
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  height: 6px;
+}
+
+.pr-progress-fill {
+  background: var(--accent-blue);
+  border-radius: 999px;
+  height: 100%;
+  transition: width 0.8s ease;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-surface); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+/* ─── Animations ─────────────────────────────────── */
+@keyframes trainPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(0, 122, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0); }
+}
+
+.train-pulse { animation: trainPulse 2s infinite; }
+
+@keyframes routeGlow {
+  0%, 100% { opacity: 0.8; }
+  50%       { opacity: 1; }
+}
+.route-glow { animation: routeGlow 3s ease-in-out infinite; }
+
+/* ─── MapLibre popup (flat style) ────────────────── */
+.maplibregl-popup-content {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+}
+
+.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.maplibregl-popup-anchor-left .maplibregl-popup-tip,
+.maplibregl-popup-anchor-right .maplibregl-popup-tip {
+  border-bottom-color: var(--bg-surface) !important;
+  border-top-color: var(--bg-surface) !important;
 }
