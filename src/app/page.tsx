@@ -272,9 +272,17 @@ export default function HomePage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 8 }}>
             {browsedTrains.map(train => (
-              <button
+              <div
                 key={train.trainNumber}
                 onClick={() => handleSelectTrain(train)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSelectTrain(train);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
                 style={{ textAlign: 'left', padding: '12px 14px', borderRadius: 12, border: `1px solid ${C.border}`, background: C.card, cursor: 'pointer', transition: 'all 0.15s', display: 'flex', flexDirection: 'column', gap: 5 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.borderColor = C.blue;
@@ -290,8 +298,10 @@ export default function HomePage() {
                     #{train.trainNumber}
                   </span>
                   <button
+                    type="button"
                     onClick={e => { e.stopPropagation(); toggleFavourite(train.trainNumber); }}
                     style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, lineHeight: 1 }}
+                    aria-label={favouriteTrainIds.includes(train.trainNumber) ? 'Remove train from saved' : 'Save train'}
                   >
                     <Star style={{ width: 12, height: 12, color: C.amber, fill: favouriteTrainIds.includes(train.trainNumber) ? C.amber : 'none' }} />
                   </button>
@@ -302,7 +312,7 @@ export default function HomePage() {
                 <div style={{ fontSize: 10, color: C.dim, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {train.origin.split('(')[0].trim()} → {train.destination.split('(')[0].trim()}
                 </div>
-              </button>
+              </div>
             ))}
           </div>
         </section>
