@@ -1,4 +1,5 @@
 import { WeatherData } from '@/types';
+import { backendFetch } from '@/lib/backendClient';
 
 export interface WeatherForecastDay {
   date: string;
@@ -34,33 +35,33 @@ const MOCK_WEATHER: LiveWeather = {
 };
 
 /**
- * Get live weather + 3-day forecast for a coordinate pair.
+ * Get live weather + 3-day forecast from Python backend for a coordinate pair.
  * Falls back to mock data on failure.
  */
 export async function getWeatherByCoords(lat: number, lon: number): Promise<LiveWeather> {
   try {
-    const res = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
-    if (!res.ok) throw new Error(`Weather API ${res.status}`);
-    const data = await res.json();
+    const data = await backendFetch<LiveWeather>('/api/weather', {
+      params: { lat, lon },
+    });
 
     const iconCode: string = data.icon || '01d';
     const isRain = data.condition?.toLowerCase().includes('rain');
-    const isCloudy = data.condition?.toLowerCase().includes('cloud');
 
     return {
-      stationCode: '',
-      stationName: data.name || 'Station',
+      stationCode: data.stationCode || '',
+      stationName: data.stationName || 'Station',
       tempC: data.tempC ?? 28,
       feelsLike: data.feelsLike ?? Math.round(data.tempC * 1.08),
       condition: data.condition || 'Clear',
       humidity: data.humidity ?? 60,
       windSpeedKm: data.windSpeedKm ?? 12,
       rainProbability: data.rainProbability ?? (isRain ? 75 : 10),
-      visibility: data.visibility ? Math.round(data.visibility / 1000) : 8,
+      visibility: data.visibility ?? 8,
       icon: iconCode,
-      forecast: MOCK_WEATHER.forecast, // 3-day from mock until we add OWM forecast endpoint
+      forecast: data.forecast || MOCK_WEATHER.forecast,
     };
-  } catch {
+  } catch (error) {
+    console.warn('[Weather] API unavailable, using mock data:', error);
     return { ...MOCK_WEATHER, stationName: 'Station Area' };
   }
 }

@@ -1,5 +1,6 @@
 import { Attraction } from '@/types';
 import { MOCK_NEARBY_ATTRACTIONS } from '@/data/mockData';
+import { backendFetch } from '@/lib/backendClient';
 
 const CATEGORY_TAGS: Record<string, string[]> = {
   River:    ['waterway=river', 'natural=water'],
@@ -14,7 +15,7 @@ const CATEGORY_TAGS: Record<string, string[]> = {
 export type AttractionCategory = keyof typeof CATEGORY_TAGS;
 
 /**
- * Fetch nearby places from Overpass API via our /api/places proxy.
+ * Fetch nearby places from Python backend (Overpass API proxy).
  * Returns deduplicated attractions grouped by category.
  * Falls back to mock data on any failure.
  */
@@ -24,13 +25,18 @@ export async function getNearbyPlaces(
   radiusKm = 20
 ): Promise<Attraction[]> {
   try {
-    const res = await fetch(`/api/places?lat=${lat}&lon=${lon}&radius=${radiusKm * 1000}`);
-    if (!res.ok) throw new Error(`Places API ${res.status}`);
-    const data: Attraction[] = await res.json();
+    const data = await backendFetch<Attraction[]>('/api/places/nearby', {
+      params: {
+        lat,
+        lon,
+        radius: radiusKm * 1000,
+      },
+    });
+
     if (Array.isArray(data) && data.length > 0) return data;
     return MOCK_NEARBY_ATTRACTIONS;
-  } catch {
-    console.warn('[Places] Overpass API unavailable, using mock attractions');
+  } catch (error) {
+    console.warn('[Places] API unavailable, using mock attractions:', error);
     return MOCK_NEARBY_ATTRACTIONS;
   }
 }
