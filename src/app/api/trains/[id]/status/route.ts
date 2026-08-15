@@ -1,36 +1,58 @@
 import { NextResponse } from 'next/server';
 import { MUMBAI_RAJDHANI_TRAIN } from '@/data/mockData';
+import { getStaticTrainRoute, STATION_COORDS } from '@/data/trainDatabase';
 import { Station } from '@/types';
 
 // In-memory cache to respect RailRadar rate limit (10 req/min)
 const cache = new Map<string, { data: any; timestamp: number }>();
 const CACHE_TTL_MS = 30_000; // 30 seconds cache
 
-// Station coordinates dictionary for Indian Railway stations
-const STATION_COORDINATES: Record<string, { lat: number; lon: number; state: string; elev: number }> = {
-  MMCT: { lat: 18.9696, lon: 72.8193, state: 'Maharashtra', elev: 12 },
-  BVI: { lat: 19.2294, lon: 72.8569, state: 'Maharashtra', elev: 14 },
-  SAH: { lat: 19.58, lon: 72.82, state: 'Maharashtra', elev: 18 },
-  PLG: { lat: 19.696, lon: 72.765, state: 'Maharashtra', elev: 15 },
-  DRD: { lat: 19.972, lon: 72.736, state: 'Maharashtra', elev: 10 },
-  VAPI: { lat: 20.372, lon: 72.904, state: 'Gujarat', elev: 27 },
-  BL: { lat: 20.61, lon: 72.93, state: 'Gujarat', elev: 28 },
-  ST: { lat: 21.2049, lon: 72.8406, state: 'Gujarat', elev: 13 },
-  BH: { lat: 21.705, lon: 72.993, state: 'Gujarat', elev: 20 },
-  BRC: { lat: 22.3107, lon: 73.1812, state: 'Gujarat', elev: 36 },
-  RTM: { lat: 23.332, lon: 75.038, state: 'Madhya Pradesh', elev: 480 },
-  KOTA: { lat: 25.213, lon: 75.864, state: 'Rajasthan', elev: 256 },
-  SWM: { lat: 25.996, lon: 76.368, state: 'Rajasthan', elev: 275 },
-  MTJ: { lat: 27.4924, lon: 77.6737, state: 'Uttar Pradesh', elev: 177 },
-  NZM: { lat: 28.5898, lon: 77.2536, state: 'Delhi', elev: 207 },
-  NDLS: { lat: 28.643, lon: 77.2194, state: 'Delhi', elev: 214 },
-  CSMT: { lat: 18.94, lon: 72.835, state: 'Maharashtra', elev: 8 },
-  RKMP: { lat: 23.2, lon: 77.43, state: 'Madhya Pradesh', elev: 500 },
-  BSB: { lat: 25.32, lon: 82.98, state: 'Uttar Pradesh', elev: 80 },
-  HWH: { lat: 22.58, lon: 88.34, state: 'West Bengal', elev: 9 },
-  TVC: { lat: 8.49, lon: 76.95, state: 'Kerala', elev: 10 },
-  LKO: { lat: 26.83, lon: 80.92, state: 'Uttar Pradesh', elev: 123 },
-};
+/**
+ * Resolves accurate coordinates for a list of route stations.
+ * Priority:
+ * 1. High-precision STATION_COORDS dictionary
+ * 2. API returned lat / lng for the station
+ * 3. Interpolation between nearest previous and next known station coordinates
+ */
+function resolveStationCoordinates(rawStations: any[]): { lat: number; lon: number; state: string; elev: number }[] {
+  const resolved = rawStations.map((st) => {
+    const code = st.stationCode || st.code;
+    const known = STATION_COORDS[code];
+    if (known) return { lat: known.lat, lon: known.lon, state: known.state, elev: known.elev };
+
+    const apiLat = parseFloat(st.lat ?? st.latitude);
+    const apiLon = parseFloat(st.lng ?? st.lon ?? st.longitude);
+    if (!isNaN(apiLat) && !isNaN(apiLon) && apiLat !== 0 && apiLon !== 0) {
+      return { lat: apiLat, lon: apiLon, state: st.state || 'India', elev: st.elevation || 100 };
+    }
+    return null;
+  });
+
+  return rawStations.map((st, i) => {
+    if (resolved[i]) return resolved[i]!;
+
+    let prevIdx = -1;
+    for (let p = i - 1; p >= 0; p--) {
+      if (resolved[p]) { prevIdx = p; break; }
+    }
+    let nextIdx = -1;
+    for (let n = i + 1; n < rawStations.length; n++) {
+      if (resolved[n]) { nextIdx = n; break; }
+    }
+
+    const prevC = prevIdx !== -1 ? resolved[prevIdx]! : { lat: 28.643, lon: 77.2194, state: 'India', elev: 100 };
+    const nextC = nextIdx !== -1 ? resolved[nextIdx]! : prevC;
+    const range = Math.max(1, nextIdx - (prevIdx !== -1 ? prevIdx : 0));
+    const frac = (i - (prevIdx !== -1 ? prevIdx : 0)) / range;
+
+    return {
+      lat: prevC.lat + frac * (nextC.lat - prevC.lat),
+      lon: prevC.lon + frac * (nextC.lon - prevC.lon),
+      state: 'India',
+      elev: 100,
+    };
+  });
+}
 
 export async function GET(
   request: Request,
@@ -45,9 +67,13 @@ export async function GET(
     return NextResponse.json(cached.data);
   }
 
+  // Get the static route to use for fallback
+  const staticRoute = getStaticTrainRoute(trainNumber);
+
   try {
     const res = await fetch(`https://api.railradar.in/v1/trains/${trainNumber}/live`, {
       headers: {
+        'Authorization': `Bearer ${apiKey}`,
         'x-api-key': apiKey,
       },
       next: { revalidate: 30 },
@@ -60,79 +86,158 @@ export async function GET(
         const trainMeta = liveData.train || {};
         const rawRoute: any[] = liveData.route || [];
 
-        const totalDistance = trainMeta.distance || 1380;
+        const totalDistance = trainMeta.distance || staticRoute?.totalDistance || 1380;
         const delayMinutes = liveData.delayMinutes || 0;
 
-        // Parse station list from RailRadar live route
+        // Resolve accurate station coordinates
+        const stationCoords = resolveStationCoordinates(rawRoute);
+
+        // Find last departed station
+        let lastDepartedIdx = -1;
+        for (let i = 0; i < rawRoute.length; i++) {
+          if (rawRoute[i]?.status === 'departed') {
+            lastDepartedIdx = i;
+          }
+        }
+
+        // Determine current active station index and next stop index
+        let currStationIdx = lastDepartedIdx >= 0 ? lastDepartedIdx : 0;
+        let nextStationIdx = Math.min(rawRoute.length - 1, currStationIdx + 1);
+
+        // Check if train is currently halted at a station
+        const isHaltedAtStation = rawRoute[currStationIdx]?.status === 'arrived';
+        if (isHaltedAtStation) {
+          nextStationIdx = Math.min(rawRoute.length - 1, currStationIdx + 1);
+        }
+
         const stations: Station[] = rawRoute.map((st: any, index: number) => {
-          const coords = STATION_COORDINATES[st.stationCode] || {
-            lat: 18.9696 + (index / Math.max(1, rawRoute.length - 1)) * (28.643 - 18.9696),
-            lon: 72.8193 + (index / Math.max(1, rawRoute.length - 1)) * (77.2194 - 72.8193),
-            state: 'India',
-            elev: 50 + index * 5,
-          };
+          const coords = stationCoords[index];
 
-          const isPassed = st.status === 'departed';
-          const isNext = !isPassed && index > 0 && rawRoute[index - 1]?.status === 'departed';
-          const isCurrent = isPassed && (index === rawRoute.length - 1 || rawRoute[index + 1]?.status !== 'departed');
+          const isPassed = index < currStationIdx || (index === currStationIdx && !isHaltedAtStation);
+          const isCurrent = index === currStationIdx;
+          const isNext = index === nextStationIdx && nextStationIdx !== currStationIdx;
 
-          const scheduledArr = st.scheduledArrival ? new Date(st.scheduledArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) : '--';
-          const scheduledDep = st.scheduledDeparture ? new Date(st.scheduledDeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) : '--';
-          const actualArr = st.actualArrival ? new Date(st.actualArrival).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) : undefined;
-          const actualDep = st.actualDeparture ? new Date(st.actualDeparture).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) : undefined;
+          const fmt = (iso: string | undefined) =>
+            iso ? new Date(iso).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }) : '--';
 
           return {
-            code: st.stationCode,
-            name: st.stationName,
+            code: st.stationCode || st.code,
+            name: st.stationName || st.name || st.stationCode || st.code,
             state: coords.state,
-            latitude: coords.lat,
+            latitude:  coords.lat,
             longitude: coords.lon,
-            arrivalTime: scheduledArr,
-            departureTime: scheduledDep,
-            actualArrival: actualArr,
-            actualDeparture: actualDep,
+            arrivalTime:    fmt(st.scheduledArrival),
+            departureTime:  fmt(st.scheduledDeparture),
+            actualArrival:  st.actualArrival   ? fmt(st.actualArrival)   : undefined,
+            actualDeparture:st.actualDeparture ? fmt(st.actualDeparture) : undefined,
             delayMinutes: st.delayDeparture || st.delayArrival || delayMinutes,
-            distanceFromOrigin: Math.round(st.distance || 0),
+            distanceFromOrigin: Math.round(st.distance || (index / Math.max(1, rawRoute.length - 1)) * totalDistance),
             elevation: coords.elev,
             platform: st.platform || '1',
-            // isHalt: true means the train has a scheduled stop (halts) at this station;
-            // false means it passes through without a stop (intermediate/passing station)
-            isHalt: !!(st.scheduledDeparture && st.haltMinutes !== 0),
+            isHalt:     !!(st.scheduledDeparture && st.haltMinutes !== 0),
             isPassed,
             isCurrent,
             isNext,
           };
         });
 
-        // Find current station and next station
-        const currentStationObj = stations.find((s) => s.isCurrent) || stations[0];
-        const nextStationObj = stations.find((s) => s.isNext) || stations[1] || stations[0];
+        const currentStationObj = stations[currStationIdx] || stations[0];
+        const nextStationObj    = stations[nextStationIdx] || stations[1] || stations[0];
 
-        const distanceCovered = Math.round(currentStationObj.distanceFromOrigin);
+        // ── Determine exact real-time GPS coordinates ─────────────────────────────
+        const directLat = parseFloat(
+          liveData.currentLocation?.lat ??
+          liveData.currentLocation?.latitude ??
+          liveData.currentPosition?.lat ??
+          liveData.lat
+        );
+        const directLon = parseFloat(
+          liveData.currentLocation?.lng ??
+          liveData.currentLocation?.lon ??
+          liveData.currentLocation?.longitude ??
+          liveData.currentPosition?.lng ??
+          liveData.lng
+        );
+
+        let currentLatitude = currentStationObj.latitude;
+        let currentLongitude = currentStationObj.longitude;
+
+        if (!isNaN(directLat) && !isNaN(directLon) && directLat !== 0 && directLon !== 0) {
+          currentLatitude = directLat;
+          currentLongitude = directLon;
+        } else if (typeof liveData.currentLocation?.segmentProgress === 'number') {
+          const p = Math.max(0, Math.min(1, liveData.currentLocation.segmentProgress));
+          currentLatitude  = currentStationObj.latitude  + p * (nextStationObj.latitude  - currentStationObj.latitude);
+          currentLongitude = currentStationObj.longitude + p * (nextStationObj.longitude - currentStationObj.longitude);
+        } else if (nextStationObj && nextStationObj !== currentStationObj) {
+          // Progress calculation along current leg
+          let progress = 0.5;
+
+          const totalLegDist = nextStationObj.distanceFromOrigin - currentStationObj.distanceFromOrigin;
+          const coveredDist = liveData.distanceCovered ?? liveData.currentLocation?.distance;
+
+          if (typeof coveredDist === 'number' && totalLegDist > 0) {
+            progress = Math.max(0.05, Math.min(0.95, (coveredDist - currentStationObj.distanceFromOrigin) / totalLegDist));
+          } else {
+            // Time-based interpolation along active segment
+            try {
+              const parseTime = (st: Station, preferDep: boolean) => {
+                const timeStr = preferDep ? (st.actualDeparture || st.departureTime) : (st.actualArrival || st.arrivalTime);
+                if (!timeStr || timeStr === '--') return null;
+                const parts = timeStr.split(':').map(Number);
+                if (parts.length < 2 || isNaN(parts[0]) || isNaN(parts[1])) return null;
+                const now = new Date();
+                return new Date(now.getFullYear(), now.getMonth(), now.getDate(), parts[0], parts[1]).getTime();
+              };
+
+              const depMs = parseTime(currentStationObj, true);
+              const arrMs = parseTime(nextStationObj, false);
+              const nowMs = Date.now();
+
+              if (depMs && arrMs && arrMs > depMs) {
+                progress = Math.max(0.05, Math.min(0.95, (nowMs - depMs) / (arrMs - depMs)));
+              }
+            } catch {
+              progress = 0.5;
+            }
+          }
+
+          currentLatitude  = currentStationObj.latitude  + progress * (nextStationObj.latitude  - currentStationObj.latitude);
+          currentLongitude = currentStationObj.longitude + progress * (nextStationObj.longitude - currentStationObj.longitude);
+        }
+
+        // Distance covered and remaining
+        const distanceCovered = Math.round(
+          liveData.distanceCovered ??
+          liveData.currentLocation?.distance ??
+          (currentStationObj.distanceFromOrigin +
+            Math.hypot(currentLatitude - currentStationObj.latitude, currentLongitude - currentStationObj.longitude) * 111)
+        );
         const distanceRemaining = Math.max(0, totalDistance - distanceCovered);
         const completionPercent = Math.min(100, Math.round((distanceCovered / totalDistance) * 100));
 
-        // Format updated train object
         const formattedTrain = {
-          id: trainNumber,
-          trainNumber: trainNumber,
-          trainName: trainMeta.name || liveData.trainName || 'Indian Express',
-          origin: trainMeta.source?.name || 'Origin Station',
-          destination: trainMeta.destination?.name || 'Destination Station',
-          totalDistance: totalDistance,
-          speed: Math.round(liveData.speed || trainMeta.avgSpeed || 95),
-          delayMinutes: delayMinutes,
-          status: delayMinutes > 15 ? 'DELAYED' : 'ON_TIME',
-          lastUpdated: liveData.lastUpdatedAt ? new Date(liveData.lastUpdatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : 'Just now',
-          completionPercent: completionPercent,
-          distanceCovered: distanceCovered,
-          distanceRemaining: distanceRemaining,
-          totalDuration: `${Math.floor((trainMeta.duration || 932) / 60)}h ${(trainMeta.duration || 932) % 60}m`,
-          currentLatitude: currentStationObj.latitude,
-          currentLongitude: currentStationObj.longitude,
-          currentStation: currentStationObj,
-          nextStation: nextStationObj,
-          stations: stations,
+          id:             trainNumber,
+          trainNumber:    trainNumber,
+          trainName:      trainMeta.name || liveData.trainName || staticRoute?.trainName || 'Indian Express',
+          origin:         trainMeta.source?.name      || staticRoute?.origin      || stations[0]?.name || 'Origin',
+          destination:    trainMeta.destination?.name || staticRoute?.destination || stations[stations.length - 1]?.name || 'Destination',
+          totalDistance,
+          speed:          Math.round(liveData.speed || trainMeta.avgSpeed || 95),
+          delayMinutes,
+          status:         delayMinutes > 15 ? 'DELAYED' : 'ON_TIME',
+          lastUpdated:    liveData.lastUpdatedAt
+            ? new Date(liveData.lastUpdatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+            : 'Just now',
+          completionPercent,
+          distanceCovered,
+          distanceRemaining,
+          totalDuration:  staticRoute?.totalDuration ?? `${Math.floor((trainMeta.duration || 932) / 60)}h ${(trainMeta.duration || 932) % 60}m`,
+          currentLatitude,
+          currentLongitude,
+          currentStation:   currentStationObj,
+          nextStation:      nextStationObj,
+          stations,
         };
 
         cache.set(trainNumber, { data: formattedTrain, timestamp: Date.now() });
@@ -140,15 +245,79 @@ export async function GET(
       }
     }
   } catch (err: any) {
-    console.error('RailRadar API status parse error:', err.message);
+    console.error('RailRadar API error:', err.message);
   }
 
-  // Local realistic fallback if API fails
-  const fallback = {
-    ...MUMBAI_RAJDHANI_TRAIN,
-    id: trainNumber,
-    trainNumber: trainNumber,
-  };
+  // ── Fallback: serve static route with time-based active position ─────────
+  let fallback = staticRoute
+    ? { ...staticRoute, isStale: true }
+    : { ...MUMBAI_RAJDHANI_TRAIN, id: trainNumber, trainNumber, isStale: true };
+
+  // Calculate dynamic fallback train position based on current time
+  if (fallback.stations && fallback.stations.length >= 2) {
+    const stations = fallback.stations;
+    const now = new Date();
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+
+    let activeSegmentIdx = 0;
+    for (let i = 0; i < stations.length - 1; i++) {
+      const depStr = stations[i].departureTime;
+      if (depStr && depStr !== '--') {
+        const [h, m] = depStr.split(':').map(Number);
+        if (!isNaN(h) && !isNaN(m)) {
+          const depMins = h * 60 + m;
+          if (currentMins >= depMins) {
+            activeSegmentIdx = i;
+          }
+        }
+      }
+    }
+
+    const nextIdx = Math.min(stations.length - 1, activeSegmentIdx + 1);
+
+    stations.forEach((s, idx) => {
+      s.isPassed = idx < activeSegmentIdx;
+      s.isCurrent = idx === activeSegmentIdx;
+      s.isNext = idx === nextIdx && nextIdx !== activeSegmentIdx;
+    });
+
+    const currSt = stations[activeSegmentIdx];
+    const nextSt = stations[nextIdx];
+
+    // Compute progress between currSt and nextSt
+    let p = 0.5;
+    if (nextSt && nextSt !== currSt) {
+      const depStr = currSt.departureTime;
+      const arrStr = nextSt.arrivalTime;
+      if (depStr && arrStr && depStr !== '--' && arrStr !== '--') {
+        const [dh, dm] = depStr.split(':').map(Number);
+        const [ah, am] = arrStr.split(':').map(Number);
+        const depM = dh * 60 + dm;
+        let arrM = ah * 60 + am;
+        if (arrM < depM) arrM += 24 * 60; // next day
+        const span = arrM - depM;
+        if (span > 0) {
+          let elapsed = currentMins - depM;
+          if (elapsed < 0) elapsed += 24 * 60;
+          p = Math.max(0.05, Math.min(0.95, elapsed / span));
+        }
+      }
+    }
+
+    const curLat = currSt.latitude + p * (nextSt.latitude - currSt.latitude);
+    const curLon = currSt.longitude + p * (nextSt.longitude - currSt.longitude);
+
+    fallback = {
+      ...fallback,
+      currentLatitude: curLat,
+      currentLongitude: curLon,
+      currentStation: currSt,
+      nextStation: nextSt,
+      distanceCovered: Math.round(currSt.distanceFromOrigin + p * (nextSt.distanceFromOrigin - currSt.distanceFromOrigin)),
+      distanceRemaining: Math.max(0, fallback.totalDistance - Math.round(currSt.distanceFromOrigin + p * (nextSt.distanceFromOrigin - currSt.distanceFromOrigin))),
+      completionPercent: Math.min(100, Math.round(((currSt.distanceFromOrigin + p * (nextSt.distanceFromOrigin - currSt.distanceFromOrigin)) / fallback.totalDistance) * 100)),
+    };
+  }
 
   cache.set(trainNumber, { data: fallback, timestamp: Date.now() });
   return NextResponse.json(fallback);
