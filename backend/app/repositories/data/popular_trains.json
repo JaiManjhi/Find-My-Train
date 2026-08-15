@@ -1,0 +1,86 @@
+[
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Rajdhani Express",
+    "origin": "Mumbai Central (MMCT)",
+    "destination": "New Delhi (NDLS)",
+    "runsOnDays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "departureTime": "17:00",
+    "arrivalTime": "08:32"
+  },
+  {
+    "trainNumber": "12002",
+    "trainName": "Bhopal Shatabdi Express",
+    "origin": "New Delhi (NDLS)",
+    "destination": "Rani Kamalapati (RKMP)",
+    "runsOnDays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "departureTime": "06:00",
+    "arrivalTime": "14:40"
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "Vande Bharat Express",
+    "origin": "New Delhi (NDLS)",
+    "destination": "Varanasi Jn (BSB)",
+    "runsOnDays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "departureTime": "06:00",
+    "arrivalTime": "14:00"
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah Rajdhani Express",
+    "origin": "Howrah Jn (HWH)",
+    "destination": "New Delhi (NDLS)",
+    "runsOnDays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "departureTime": "16:50",
+    "arrivalTime": "10:05"
+  },
+  {
+    "trainNumber": "12626",
+    "trainName": "Kerala Superfast Express",
+    "origin": "New Delhi (NDLS)",
+    "destination": "Trivandrum Central (TVC)",
+    "runsOnDays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "departureTime": "20:10",
+    "arrivalTime": "14:15"
+  }
+]

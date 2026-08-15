@@ -1,0 +1,47 @@
+[
+  {
+    "id": "att-1",
+    "name": "Chambal River Bridge",
+    "category": "Bridge",
+    "latitude": 25.18,
+    "longitude": 75.84,
+    "distanceFromTrackKm": 1.2,
+    "description": "Iconic railway bridge spanning the pristine Chambal River gorge near Kota."
+  },
+  {
+    "id": "att-2",
+    "name": "Mukundara Hills Tiger Reserve & Tunnels",
+    "category": "Tunnel",
+    "latitude": 24.85,
+    "longitude": 75.92,
+    "distanceFromTrackKm": 4.5,
+    "description": "Series of picturesque railway tunnels passing through dense teak forests of Mukundara Ghats."
+  },
+  {
+    "id": "att-3",
+    "name": "Garadia Mahadev Canyon",
+    "category": "Ghat",
+    "latitude": 25.07,
+    "longitude": 75.75,
+    "distanceFromTrackKm": 6.8,
+    "description": "Breathtaking horseshoe canyon formed by the Chambal River."
+  },
+  {
+    "id": "att-4",
+    "name": "Ranthambore Tiger Reserve Boundary",
+    "category": "Mountain",
+    "latitude": 26.01,
+    "longitude": 76.35,
+    "distanceFromTrackKm": 8.0,
+    "description": "Rugged Vindhya mountain ridges bordering Sawai Madhopur railway sector."
+  },
+  {
+    "id": "att-5",
+    "name": "Seven Wonders Park Kota",
+    "category": "Monument",
+    "latitude": 25.16,
+    "longitude": 75.83,
+    "distanceFromTrackKm": 3.1,
+    "description": "Lakeside park featuring miniature replicas of world monuments."
+  }
+]
