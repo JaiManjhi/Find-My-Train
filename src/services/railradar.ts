@@ -1,7 +1,7 @@
-// ─── Service Layer: railradar.ts (expanded) ─────────────────────────────────
 import { Train, SearchResult } from '@/types';
 import { POPULAR_TRAINS, MUMBAI_RAJDHANI_TRAIN } from '@/data/mockData';
 import { INDIAN_TRAINS_DATABASE } from '@/data/trainIndex';
+import { getStaticTrainRoute } from '@/data/trainDatabase';
 
 /** Exponential backoff retry helper */
 async function fetchWithRetry(url: string, opts: RequestInit = {}, retries = 3): Promise<Response> {
@@ -49,6 +49,10 @@ export async function getLiveTrainStatusApi(trainId: string): Promise<Train & { 
     return { ...data, isStale: false };
   } catch {
     console.warn(`[RailRadar] Failed to fetch live status for ${trainId} — using fallback`);
+    const staticRoute = getStaticTrainRoute(trainId);
+    if (staticRoute) {
+      return { ...staticRoute, isStale: true };
+    }
     return { ...MUMBAI_RAJDHANI_TRAIN, id: trainId, trainNumber: trainId, isStale: true };
   }
 }

@@ -15,6 +15,7 @@ import { DashboardSkeleton } from '@/components/ui/SkeletonLoader';
 import { useLiveTracking } from '@/hooks/useLiveTracking';
 import { useTrainRoute } from '@/hooks/useTrainRoute';
 import { MUMBAI_RAJDHANI_TRAIN, MOCK_NEARBY_ATTRACTIONS } from '@/data/mockData';
+import { getStaticTrainRoute } from '@/data/trainDatabase';
 import { getNearbyPlaces } from '@/services/places';
 import { Attraction } from '@/types';
 import {
@@ -57,7 +58,9 @@ export default function LiveDashboardPage() {
 
   // Live tracking hook — handles polling, staleness, retry
   const { trainStatus, isLoading, isStale, lastUpdated, error, refresh } = useLiveTracking(trainId);
-  const train = trainStatus || MUMBAI_RAJDHANI_TRAIN;
+  // Use correct per-train static data as placeholder while live data loads
+  const staticFallback = getStaticTrainRoute(trainId) ?? MUMBAI_RAJDHANI_TRAIN;
+  const train = trainStatus ?? staticFallback;
 
   // Route stats
   const routeStats = useTrainRoute(train);
