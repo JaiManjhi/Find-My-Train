@@ -1,0 +1,618 @@
+{
+  "MMCT": {
+    "name": "Mumbai Central",
+    "lat": 18.9696,
+    "lon": 72.8193,
+    "state": "Maharashtra",
+    "elev": 12
+  },
+  "CSMT": {
+    "name": "Mumbai CSMT",
+    "lat": 18.9398,
+    "lon": 72.8354,
+    "state": "Maharashtra",
+    "elev": 8
+  },
+  "LTT": {
+    "name": "Lokmanya Tilak Terminus",
+    "lat": 19.0728,
+    "lon": 72.9192,
+    "state": "Maharashtra",
+    "elev": 11
+  },
+  "BDTS": {
+    "name": "Bandra Terminus",
+    "lat": 19.054,
+    "lon": 72.84,
+    "state": "Maharashtra",
+    "elev": 10
+  },
+  "DDR": {
+    "name": "Dadar",
+    "lat": 19.0178,
+    "lon": 72.8478,
+    "state": "Maharashtra",
+    "elev": 10
+  },
+  "BVI": {
+    "name": "Borivali",
+    "lat": 19.2294,
+    "lon": 72.8569,
+    "state": "Maharashtra",
+    "elev": 14
+  },
+  "PUNE": {
+    "name": "Pune Junction",
+    "lat": 18.5285,
+    "lon": 73.8742,
+    "state": "Maharashtra",
+    "elev": 560
+  },
+  "SUR": {
+    "name": "Solapur",
+    "lat": 17.6805,
+    "lon": 75.9064,
+    "state": "Maharashtra",
+    "elev": 470
+  },
+  "NGP": {
+    "name": "Nagpur Junction",
+    "lat": 21.1456,
+    "lon": 79.077,
+    "state": "Maharashtra",
+    "elev": 310
+  },
+  "JBP": {
+    "name": "Jabalpur",
+    "lat": 23.1669,
+    "lon": 79.937,
+    "state": "Madhya Pradesh",
+    "elev": 411
+  },
+  "ST": {
+    "name": "Surat",
+    "lat": 21.2049,
+    "lon": 72.8406,
+    "state": "Gujarat",
+    "elev": 13
+  },
+  "BRC": {
+    "name": "Vadodara Junction",
+    "lat": 22.3107,
+    "lon": 73.1812,
+    "state": "Gujarat",
+    "elev": 36
+  },
+  "ADI": {
+    "name": "Ahmedabad Junction",
+    "lat": 23.0258,
+    "lon": 72.6011,
+    "state": "Gujarat",
+    "elev": 54
+  },
+  "GNC": {
+    "name": "Gandhinagar Capital",
+    "lat": 23.225,
+    "lon": 72.6519,
+    "state": "Gujarat",
+    "elev": 81
+  },
+  "VG": {
+    "name": "Vasad",
+    "lat": 22.4733,
+    "lon": 73.084,
+    "state": "Gujarat",
+    "elev": 28
+  },
+  "RTM": {
+    "name": "Ratlam Junction",
+    "lat": 23.332,
+    "lon": 75.038,
+    "state": "Madhya Pradesh",
+    "elev": 480
+  },
+  "KOTA": {
+    "name": "Kota Junction",
+    "lat": 25.213,
+    "lon": 75.864,
+    "state": "Rajasthan",
+    "elev": 256
+  },
+  "SWM": {
+    "name": "Sawai Madhopur",
+    "lat": 25.996,
+    "lon": 76.368,
+    "state": "Rajasthan",
+    "elev": 275
+  },
+  "BKN": {
+    "name": "Bikaner Junction",
+    "lat": 28.0249,
+    "lon": 73.3069,
+    "state": "Rajasthan",
+    "elev": 234
+  },
+  "JP": {
+    "name": "Jaipur Junction",
+    "lat": 26.9213,
+    "lon": 75.7881,
+    "state": "Rajasthan",
+    "elev": 431
+  },
+  "JU": {
+    "name": "Jodhpur Junction",
+    "lat": 26.2812,
+    "lon": 73.0244,
+    "state": "Rajasthan",
+    "elev": 232
+  },
+  "NDLS": {
+    "name": "New Delhi",
+    "lat": 28.643,
+    "lon": 77.2194,
+    "state": "Delhi",
+    "elev": 214
+  },
+  "NZM": {
+    "name": "Hazrat Nizamuddin",
+    "lat": 28.5898,
+    "lon": 77.2536,
+    "state": "Delhi",
+    "elev": 207
+  },
+  "ANVT": {
+    "name": "Anand Vihar Terminus",
+    "lat": 28.6468,
+    "lon": 77.3156,
+    "state": "Delhi",
+    "elev": 212
+  },
+  "DLI": {
+    "name": "Old Delhi Junction",
+    "lat": 28.6569,
+    "lon": 77.2137,
+    "state": "Delhi",
+    "elev": 207
+  },
+  "MTJ": {
+    "name": "Mathura Junction",
+    "lat": 27.4924,
+    "lon": 77.6737,
+    "state": "Uttar Pradesh",
+    "elev": 177
+  },
+  "AGC": {
+    "name": "Agra Cantt",
+    "lat": 27.1501,
+    "lon": 78.0483,
+    "state": "Uttar Pradesh",
+    "elev": 169
+  },
+  "CNB": {
+    "name": "Kanpur Central",
+    "lat": 26.4468,
+    "lon": 80.3492,
+    "state": "Uttar Pradesh",
+    "elev": 126
+  },
+  "LKO": {
+    "name": "Lucknow Charbagh",
+    "lat": 26.8367,
+    "lon": 80.9231,
+    "state": "Uttar Pradesh",
+    "elev": 123
+  },
+  "BSB": {
+    "name": "Varanasi Junction",
+    "lat": 25.3176,
+    "lon": 82.9739,
+    "state": "Uttar Pradesh",
+    "elev": 80
+  },
+  "ALD": {
+    "name": "Prayagraj Junction",
+    "lat": 25.4358,
+    "lon": 81.8463,
+    "state": "Uttar Pradesh",
+    "elev": 98
+  },
+  "GKP": {
+    "name": "Gorakhpur Junction",
+    "lat": 26.7606,
+    "lon": 83.3732,
+    "state": "Uttar Pradesh",
+    "elev": 84
+  },
+  "PNBE": {
+    "name": "Patna Junction",
+    "lat": 25.6102,
+    "lon": 85.1399,
+    "state": "Bihar",
+    "elev": 54
+  },
+  "RJPB": {
+    "name": "Rajendra Nagar",
+    "lat": 25.5941,
+    "lon": 85.1195,
+    "state": "Bihar",
+    "elev": 52
+  },
+  "GAYA": {
+    "name": "Gaya Junction",
+    "lat": 24.7957,
+    "lon": 85.0041,
+    "state": "Bihar",
+    "elev": 113
+  },
+  "RKMP": {
+    "name": "Rani Kamalapati",
+    "lat": 23.2,
+    "lon": 77.43,
+    "state": "Madhya Pradesh",
+    "elev": 500
+  },
+  "BPL": {
+    "name": "Bhopal Junction",
+    "lat": 23.2675,
+    "lon": 77.4091,
+    "state": "Madhya Pradesh",
+    "elev": 497
+  },
+  "ETW": {
+    "name": "Itarsi Junction",
+    "lat": 22.61,
+    "lon": 77.763,
+    "state": "Madhya Pradesh",
+    "elev": 323
+  },
+  "AMB": {
+    "name": "Ambala Cantt",
+    "lat": 30.3754,
+    "lon": 76.82,
+    "state": "Haryana",
+    "elev": 272
+  },
+  "LDH": {
+    "name": "Ludhiana Junction",
+    "lat": 30.89,
+    "lon": 75.8659,
+    "state": "Punjab",
+    "elev": 244
+  },
+  "ASR": {
+    "name": "Amritsar Junction",
+    "lat": 31.6354,
+    "lon": 74.8756,
+    "state": "Punjab",
+    "elev": 234
+  },
+  "CDG": {
+    "name": "Chandigarh",
+    "lat": 30.7333,
+    "lon": 76.7794,
+    "state": "Punjab",
+    "elev": 321
+  },
+  "KLK": {
+    "name": "Kalka",
+    "lat": 30.848,
+    "lon": 76.9534,
+    "state": "Haryana",
+    "elev": 656
+  },
+  "FZR": {
+    "name": "Firozpur Cantt",
+    "lat": 30.9167,
+    "lon": 74.6062,
+    "state": "Punjab",
+    "elev": 185
+  },
+  "DDN": {
+    "name": "Dehradun",
+    "lat": 30.3165,
+    "lon": 78.0322,
+    "state": "Uttarakhand",
+    "elev": 636
+  },
+  "HWH": {
+    "name": "Howrah Junction",
+    "lat": 22.5852,
+    "lon": 88.342,
+    "state": "West Bengal",
+    "elev": 9
+  },
+  "SDAH": {
+    "name": "Sealdah",
+    "lat": 22.5674,
+    "lon": 88.3703,
+    "state": "West Bengal",
+    "elev": 7
+  },
+  "PURI": {
+    "name": "Puri",
+    "lat": 19.808,
+    "lon": 85.8315,
+    "state": "Odisha",
+    "elev": 6
+  },
+  "BBS": {
+    "name": "Bhubaneswar",
+    "lat": 20.264,
+    "lon": 85.8408,
+    "state": "Odisha",
+    "elev": 45
+  },
+  "RNC": {
+    "name": "Ranchi Junction",
+    "lat": 23.3441,
+    "lon": 85.3096,
+    "state": "Jharkhand",
+    "elev": 651
+  },
+  "SC": {
+    "name": "Secunderabad Jn",
+    "lat": 17.4399,
+    "lon": 78.4983,
+    "state": "Telangana",
+    "elev": 530
+  },
+  "HYB": {
+    "name": "Hyderabad Deccan",
+    "lat": 17.385,
+    "lon": 78.4867,
+    "state": "Telangana",
+    "elev": 531
+  },
+  "GTL": {
+    "name": "Guntakal Jn",
+    "lat": 15.167,
+    "lon": 77.368,
+    "state": "Andhra Pradesh",
+    "elev": 456
+  },
+  "SBC": {
+    "name": "KSR Bengaluru",
+    "lat": 12.9769,
+    "lon": 77.5704,
+    "state": "Karnataka",
+    "elev": 906
+  },
+  "MYS": {
+    "name": "Mysuru Junction",
+    "lat": 12.3051,
+    "lon": 76.6551,
+    "state": "Karnataka",
+    "elev": 770
+  },
+  "MAS": {
+    "name": "Chennai Central",
+    "lat": 13.0837,
+    "lon": 80.2755,
+    "state": "Tamil Nadu",
+    "elev": 6
+  },
+  "MS": {
+    "name": "Chennai Egmore",
+    "lat": 13.081,
+    "lon": 80.2628,
+    "state": "Tamil Nadu",
+    "elev": 6
+  },
+  "MDU": {
+    "name": "Madurai Junction",
+    "lat": 9.9195,
+    "lon": 78.1196,
+    "state": "Tamil Nadu",
+    "elev": 101
+  },
+  "TVC": {
+    "name": "Trivandrum Central",
+    "lat": 8.4875,
+    "lon": 76.9525,
+    "state": "Kerala",
+    "elev": 10
+  },
+  "ERS": {
+    "name": "Ernakulam Junction",
+    "lat": 9.9816,
+    "lon": 76.2998,
+    "state": "Kerala",
+    "elev": 7
+  },
+  "CLT": {
+    "name": "Kozhikode",
+    "lat": 11.2588,
+    "lon": 75.7804,
+    "state": "Kerala",
+    "elev": 14
+  },
+  "MAQ": {
+    "name": "Mangaluru Junction",
+    "lat": 12.8698,
+    "lon": 74.8425,
+    "state": "Karnataka",
+    "elev": 22
+  },
+  "GHY": {
+    "name": "Guwahati",
+    "lat": 26.1833,
+    "lon": 91.7458,
+    "state": "Assam",
+    "elev": 49
+  },
+  "DBRG": {
+    "name": "Dibrugarh Town",
+    "lat": 27.4728,
+    "lon": 94.9022,
+    "state": "Assam",
+    "elev": 108
+  },
+  "SCL": {
+    "name": "Silchar",
+    "lat": 24.8333,
+    "lon": 92.7789,
+    "state": "Assam",
+    "elev": 14
+  },
+  "NHL": {
+    "name": "Naharlagun",
+    "lat": 27.1017,
+    "lon": 93.6889,
+    "state": "Arunachal Pradesh",
+    "elev": 180
+  },
+  "LGH": {
+    "name": "Lalgarh Junction",
+    "lat": 26.8673,
+    "lon": 73.382,
+    "state": "Rajasthan",
+    "elev": 223
+  },
+  "SHC": {
+    "name": "Saharsa Junction",
+    "lat": 25.875,
+    "lon": 86.596,
+    "state": "Bihar",
+    "elev": 42
+  },
+  "VAPI": {
+    "name": "Vapi",
+    "lat": 20.3713,
+    "lon": 72.9042,
+    "state": "Gujarat",
+    "elev": 27
+  },
+  "BL": {
+    "name": "Valsad",
+    "lat": 20.6102,
+    "lon": 72.9264,
+    "state": "Gujarat",
+    "elev": 14
+  },
+  "BH": {
+    "name": "Bharuch Junction",
+    "lat": 21.7051,
+    "lon": 72.9959,
+    "state": "Gujarat",
+    "elev": 20
+  },
+  "ANND": {
+    "name": "Anand Junction",
+    "lat": 22.5645,
+    "lon": 72.9289,
+    "state": "Gujarat",
+    "elev": 40
+  },
+  "ND": {
+    "name": "Nadiad Junction",
+    "lat": 22.6916,
+    "lon": 72.8634,
+    "state": "Gujarat",
+    "elev": 37
+  },
+  "PLG": {
+    "name": "Palghar",
+    "lat": 19.6967,
+    "lon": 72.7667,
+    "state": "Maharashtra",
+    "elev": 15
+  },
+  "GDA": {
+    "name": "Godhra Junction",
+    "lat": 22.7758,
+    "lon": 73.6148,
+    "state": "Gujarat",
+    "elev": 119
+  },
+  "DHD": {
+    "name": "Dahod",
+    "lat": 22.836,
+    "lon": 74.256,
+    "state": "Gujarat",
+    "elev": 312
+  },
+  "NAD": {
+    "name": "Nagda Junction",
+    "lat": 23.456,
+    "lon": 75.416,
+    "state": "Madhya Pradesh",
+    "elev": 469
+  },
+  "SGZ": {
+    "name": "Shamgarh",
+    "lat": 24.1833,
+    "lon": 75.6333,
+    "state": "Madhya Pradesh",
+    "elev": 455
+  },
+  "BWM": {
+    "name": "Bhawani Mandi",
+    "lat": 24.5167,
+    "lon": 75.8333,
+    "state": "Rajasthan",
+    "elev": 381
+  },
+  "RMA": {
+    "name": "Ramganj Mandi",
+    "lat": 24.65,
+    "lon": 75.95,
+    "state": "Rajasthan",
+    "elev": 357
+  },
+  "GGC": {
+    "name": "Gangapur City",
+    "lat": 26.4715,
+    "lon": 76.7214,
+    "state": "Rajasthan",
+    "elev": 269
+  },
+  "BTE": {
+    "name": "Bharatpur Junction",
+    "lat": 27.217,
+    "lon": 77.49,
+    "state": "Rajasthan",
+    "elev": 174
+  },
+  "GWL": {
+    "name": "Gwalior Junction",
+    "lat": 26.2183,
+    "lon": 78.1828,
+    "state": "Madhya Pradesh",
+    "elev": 212
+  },
+  "VGLJ": {
+    "name": "VGL Jhansi Junction",
+    "lat": 25.4484,
+    "lon": 78.5685,
+    "state": "Madhya Pradesh",
+    "elev": 258
+  },
+  "BPQ": {
+    "name": "Balharshah Junction",
+    "lat": 19.85,
+    "lon": 79.35,
+    "state": "Maharashtra",
+    "elev": 185
+  },
+  "WL": {
+    "name": "Warangal",
+    "lat": 17.98,
+    "lon": 79.6,
+    "state": "Telangana",
+    "elev": 271
+  },
+  "BZA": {
+    "name": "Vijayawada Junction",
+    "lat": 16.5062,
+    "lon": 80.648,
+    "state": "Andhra Pradesh",
+    "elev": 19
+  },
+  "GDR": {
+    "name": "Gudur Junction",
+    "lat": 14.15,
+    "lon": 79.85,
+    "state": "Andhra Pradesh",
+    "elev": 28
+  }
+}

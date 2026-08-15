@@ -1,0 +1,32 @@
+{
+  "RTM": {
+    "stationCode": "RTM",
+    "stationName": "Ratlam Junction",
+    "tempC": 28,
+    "condition": "Partly Cloudy",
+    "humidity": 62,
+    "windSpeedKm": 14,
+    "rainProbability": 15,
+    "icon": "partly-cloudy"
+  },
+  "KOTA": {
+    "stationCode": "KOTA",
+    "stationName": "Kota Junction",
+    "tempC": 31,
+    "condition": "Clear Sky",
+    "humidity": 48,
+    "windSpeedKm": 18,
+    "rainProbability": 5,
+    "icon": "sun"
+  },
+  "NDLS": {
+    "stationCode": "NDLS",
+    "stationName": "New Delhi",
+    "tempC": 26,
+    "condition": "Mist / Haze",
+    "humidity": 74,
+    "windSpeedKm": 8,
+    "rainProbability": 20,
+    "icon": "cloud-fog"
+  }
+}

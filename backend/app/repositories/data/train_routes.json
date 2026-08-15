@@ -1,0 +1,985 @@
+[
+  {
+    "trainNumber": "12951",
+    "trainName": "Mumbai Rajdhani Express",
+    "stationCodes": [
+      "MMCT",
+      "BVI",
+      "ST",
+      "BRC",
+      "RTM",
+      "KOTA",
+      "SWM",
+      "MTJ",
+      "NZM",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "17:00|17:00",
+      "17:33|17:35",
+      "19:43|19:48",
+      "21:16|21:26",
+      "22:30|22:35",
+      "01:05|01:15",
+      "02:28|02:30",
+      "05:38|05:40",
+      "08:10|08:12",
+      "08:32|08:32"
+    ],
+    "totalDistanceKm": 1384,
+    "totalDurationStr": "15h 32m",
+    "speed": 112
+  },
+  {
+    "trainNumber": "12952",
+    "trainName": "New Delhi Rajdhani Express",
+    "stationCodes": [
+      "NDLS",
+      "NZM",
+      "MTJ",
+      "SWM",
+      "KOTA",
+      "RTM",
+      "BRC",
+      "ST",
+      "BVI",
+      "MMCT"
+    ],
+    "scheduledTimes": [
+      "16:55|16:55",
+      "17:15|17:17",
+      "20:25|20:27",
+      "23:00|23:02",
+      "00:35|00:45",
+      "03:10|03:15",
+      "06:00|06:10",
+      "08:18|08:23",
+      "10:15|10:17",
+      "10:55|10:55"
+    ],
+    "totalDistanceKm": 1384,
+    "totalDurationStr": "18h 0m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "12301",
+    "trainName": "Howrah Rajdhani Express",
+    "stationCodes": [
+      "HWH",
+      "GAYA",
+      "ALD",
+      "CNB",
+      "MTJ",
+      "AGC",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "16:50|16:50",
+      "19:35|19:45",
+      "22:40|22:45",
+      "01:15|01:25",
+      "05:40|05:42",
+      "06:55|06:57",
+      "10:05|10:05"
+    ],
+    "totalDistanceKm": 1441,
+    "totalDurationStr": "17h 15m",
+    "speed": 108
+  },
+  {
+    "trainNumber": "12302",
+    "trainName": "New Delhi Howrah Rajdhani",
+    "stationCodes": [
+      "NDLS",
+      "AGC",
+      "MTJ",
+      "CNB",
+      "ALD",
+      "GAYA",
+      "HWH"
+    ],
+    "scheduledTimes": [
+      "17:05|17:05",
+      "19:58|20:00",
+      "21:00|21:02",
+      "00:15|00:25",
+      "03:05|03:10",
+      "05:50|06:00",
+      "09:55|09:55"
+    ],
+    "totalDistanceKm": 1441,
+    "totalDurationStr": "16h 50m",
+    "speed": 108
+  },
+  {
+    "trainNumber": "12309",
+    "trainName": "Rajendra Nagar Rajdhani",
+    "stationCodes": [
+      "RJPB",
+      "PNBE",
+      "GAYA",
+      "CNB",
+      "MTJ",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "19:50|19:50",
+      "20:05|20:15",
+      "21:40|21:50",
+      "01:00|01:10",
+      "04:30|04:32",
+      "10:00|10:00"
+    ],
+    "totalDistanceKm": 1001,
+    "totalDurationStr": "14h 10m",
+    "speed": 100
+  },
+  {
+    "trainNumber": "12431",
+    "trainName": "Thiruvananthapuram Rajdhani",
+    "stationCodes": [
+      "NZM",
+      "RKMP",
+      "SC",
+      "ERS",
+      "TVC"
+    ],
+    "scheduledTimes": [
+      "11:00|11:00",
+      "14:40|14:50",
+      "02:20|02:30",
+      "09:50|10:00",
+      "13:40|13:40"
+    ],
+    "totalDistanceKm": 3146,
+    "totalDurationStr": "26h 40m",
+    "speed": 100
+  },
+  {
+    "trainNumber": "12432",
+    "trainName": "Trivandrum Rajdhani Express",
+    "stationCodes": [
+      "TVC",
+      "ERS",
+      "SC",
+      "RKMP",
+      "NZM"
+    ],
+    "scheduledTimes": [
+      "17:30|17:30",
+      "21:20|21:30",
+      "07:30|07:40",
+      "16:00|16:10",
+      "16:00|16:00"
+    ],
+    "totalDistanceKm": 3146,
+    "totalDurationStr": "22h 30m",
+    "speed": 105
+  },
+  {
+    "trainNumber": "22691",
+    "trainName": "KSR Bengaluru Rajdhani",
+    "stationCodes": [
+      "SBC",
+      "SC",
+      "GTL",
+      "RKMP",
+      "NZM"
+    ],
+    "scheduledTimes": [
+      "20:00|20:00",
+      "22:50|23:00",
+      "03:00|03:10",
+      "13:20|13:30",
+      "06:20|06:20"
+    ],
+    "totalDistanceKm": 2444,
+    "totalDurationStr": "34h 20m",
+    "speed": 95
+  },
+  {
+    "trainNumber": "12423",
+    "trainName": "Dibrugarh Rajdhani Express",
+    "stationCodes": [
+      "DBRG",
+      "GHY",
+      "PNBE",
+      "CNB",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "21:20|21:20",
+      "01:10|01:20",
+      "14:30|14:40",
+      "20:30|20:40",
+      "07:05|07:05"
+    ],
+    "totalDistanceKm": 2424,
+    "totalDurationStr": "33h 45m",
+    "speed": 95
+  },
+  {
+    "trainNumber": "12953",
+    "trainName": "August Kranti Rajdhani",
+    "stationCodes": [
+      "MMCT",
+      "BVI",
+      "ST",
+      "BRC",
+      "RTM",
+      "KOTA",
+      "AGC",
+      "NZM"
+    ],
+    "scheduledTimes": [
+      "17:10|17:10",
+      "17:43|17:45",
+      "19:58|20:03",
+      "21:30|21:40",
+      "22:50|22:55",
+      "01:20|01:30",
+      "07:15|07:17",
+      "09:43|09:43"
+    ],
+    "totalDistanceKm": 1386,
+    "totalDurationStr": "16h 33m",
+    "speed": 105
+  },
+  {
+    "trainNumber": "12002",
+    "trainName": "Bhopal Shatabdi Express",
+    "stationCodes": [
+      "NDLS",
+      "AGC",
+      "RKMP"
+    ],
+    "scheduledTimes": [
+      "06:00|06:00",
+      "08:50|08:52",
+      "14:40|14:40"
+    ],
+    "totalDistanceKm": 706,
+    "totalDurationStr": "8h 40m",
+    "speed": 120
+  },
+  {
+    "trainNumber": "12001",
+    "trainName": "Rani Kamalapati Shatabdi",
+    "stationCodes": [
+      "RKMP",
+      "AGC",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "15:15|15:15",
+      "21:05|21:07",
+      "23:55|23:55"
+    ],
+    "totalDistanceKm": 706,
+    "totalDurationStr": "8h 40m",
+    "speed": 120
+  },
+  {
+    "trainNumber": "12004",
+    "trainName": "Lucknow Shatabdi Express",
+    "stationCodes": [
+      "NDLS",
+      "CNB",
+      "LKO"
+    ],
+    "scheduledTimes": [
+      "06:10|06:10",
+      "10:25|10:30",
+      "12:40|12:40"
+    ],
+    "totalDistanceKm": 512,
+    "totalDurationStr": "6h 30m",
+    "speed": 115
+  },
+  {
+    "trainNumber": "12030",
+    "trainName": "Amritsar Shatabdi Express",
+    "stationCodes": [
+      "NDLS",
+      "AMB",
+      "LDH",
+      "ASR"
+    ],
+    "scheduledTimes": [
+      "16:25|16:25",
+      "18:45|18:50",
+      "19:55|20:00",
+      "22:40|22:40"
+    ],
+    "totalDistanceKm": 449,
+    "totalDurationStr": "6h 15m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "12009",
+    "trainName": "Shatabdi Express Mumbai-Ahmedabad",
+    "stationCodes": [
+      "MMCT",
+      "ST",
+      "BRC",
+      "ADI"
+    ],
+    "scheduledTimes": [
+      "06:25|06:25",
+      "08:30|08:35",
+      "10:15|10:25",
+      "12:55|12:55"
+    ],
+    "totalDistanceKm": 491,
+    "totalDurationStr": "6h 30m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "12045",
+    "trainName": "Chandigarh Shatabdi",
+    "stationCodes": [
+      "NDLS",
+      "AMB",
+      "CDG"
+    ],
+    "scheduledTimes": [
+      "07:20|07:20",
+      "09:25|09:30",
+      "10:45|10:45"
+    ],
+    "totalDistanceKm": 250,
+    "totalDurationStr": "3h 25m",
+    "speed": 120
+  },
+  {
+    "trainNumber": "22436",
+    "trainName": "Vande Bharat Express (Delhi-Varanasi)",
+    "stationCodes": [
+      "NDLS",
+      "CNB",
+      "ALD",
+      "BSB"
+    ],
+    "scheduledTimes": [
+      "06:00|06:00",
+      "09:45|09:50",
+      "11:10|11:15",
+      "14:00|14:00"
+    ],
+    "totalDistanceKm": 759,
+    "totalDurationStr": "8h 0m",
+    "speed": 130
+  },
+  {
+    "trainNumber": "20901",
+    "trainName": "Vande Bharat Express (Mumbai-Gandhinagar)",
+    "stationCodes": [
+      "MMCT",
+      "ST",
+      "BRC",
+      "ADI",
+      "GNC"
+    ],
+    "scheduledTimes": [
+      "06:00|06:00",
+      "07:55|08:00",
+      "09:40|09:50",
+      "12:00|12:05",
+      "12:25|12:25"
+    ],
+    "totalDistanceKm": 505,
+    "totalDurationStr": "6h 25m",
+    "speed": 130
+  },
+  {
+    "trainNumber": "22221",
+    "trainName": "Vande Bharat Express (Mumbai-Solapur)",
+    "stationCodes": [
+      "CSMT",
+      "PUNE",
+      "SUR"
+    ],
+    "scheduledTimes": [
+      "06:00|06:00",
+      "08:05|08:10",
+      "12:20|12:20"
+    ],
+    "totalDistanceKm": 450,
+    "totalDurationStr": "6h 20m",
+    "speed": 130
+  },
+  {
+    "trainNumber": "12221",
+    "trainName": "Pune Duronto Express",
+    "stationCodes": [
+      "HWH",
+      "BBS",
+      "SC",
+      "PUNE"
+    ],
+    "scheduledTimes": [
+      "20:10|20:10",
+      "23:45|00:05",
+      "11:30|11:40",
+      "16:15|16:15"
+    ],
+    "totalDistanceKm": 1879,
+    "totalDurationStr": "20h 5m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "12285",
+    "trainName": "Secunderabad Duronto",
+    "stationCodes": [
+      "SC",
+      "RKMP",
+      "NZM"
+    ],
+    "scheduledTimes": [
+      "06:10|06:10",
+      "18:00|18:10",
+      "06:45|06:45"
+    ],
+    "totalDistanceKm": 1684,
+    "totalDurationStr": "24h 35m",
+    "speed": 100
+  },
+  {
+    "trainNumber": "12263",
+    "trainName": "Pune Duronto Express (NZM)",
+    "stationCodes": [
+      "NZM",
+      "RKMP",
+      "SC",
+      "PUNE"
+    ],
+    "scheduledTimes": [
+      "11:00|11:00",
+      "22:00|22:10",
+      "08:30|08:40",
+      "08:00|08:00"
+    ],
+    "totalDistanceKm": 1857,
+    "totalDurationStr": "21h 0m",
+    "speed": 105
+  },
+  {
+    "trainNumber": "82501",
+    "trainName": "Mumbai Tejas Express",
+    "stationCodes": [
+      "CSMT",
+      "ST",
+      "BRC",
+      "ADI"
+    ],
+    "scheduledTimes": [
+      "06:25|06:25",
+      "08:30|08:35",
+      "10:15|10:25",
+      "12:45|12:45"
+    ],
+    "totalDistanceKm": 491,
+    "totalDurationStr": "6h 20m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "82901",
+    "trainName": "Lucknow Tejas Express",
+    "stationCodes": [
+      "NDLS",
+      "CNB",
+      "LKO"
+    ],
+    "scheduledTimes": [
+      "06:10|06:10",
+      "10:30|10:35",
+      "12:25|12:25"
+    ],
+    "totalDistanceKm": 512,
+    "totalDurationStr": "6h 15m",
+    "speed": 115
+  },
+  {
+    "trainNumber": "12626",
+    "trainName": "Kerala Superfast Express",
+    "stationCodes": [
+      "NDLS",
+      "RKMP",
+      "SC",
+      "ERS",
+      "TVC"
+    ],
+    "scheduledTimes": [
+      "20:10|20:10",
+      "00:10|00:20",
+      "13:05|13:15",
+      "22:00|22:10",
+      "14:15|14:15"
+    ],
+    "totalDistanceKm": 3136,
+    "totalDurationStr": "42h 5m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12625",
+    "trainName": "Kerala Express",
+    "stationCodes": [
+      "TVC",
+      "ERS",
+      "SC",
+      "RKMP",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "11:00|11:00",
+      "16:00|16:10",
+      "06:00|06:10",
+      "15:30|15:40",
+      "05:15|05:15"
+    ],
+    "totalDistanceKm": 3136,
+    "totalDurationStr": "42h 15m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12622",
+    "trainName": "Tamil Nadu Express",
+    "stationCodes": [
+      "NDLS",
+      "CNB",
+      "SC",
+      "MAS"
+    ],
+    "scheduledTimes": [
+      "22:30|22:30",
+      "04:00|04:10",
+      "18:00|18:10",
+      "06:15|06:15"
+    ],
+    "totalDistanceKm": 2180,
+    "totalDurationStr": "31h 45m",
+    "speed": 95
+  },
+  {
+    "trainNumber": "12628",
+    "trainName": "Karnataka Express",
+    "stationCodes": [
+      "NDLS",
+      "RKMP",
+      "SC",
+      "SBC"
+    ],
+    "scheduledTimes": [
+      "20:20|20:20",
+      "01:30|01:40",
+      "13:00|13:10",
+      "12:00|12:00"
+    ],
+    "totalDistanceKm": 3135,
+    "totalDurationStr": "39h 40m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12627",
+    "trainName": "Karnataka Express (Return)",
+    "stationCodes": [
+      "SBC",
+      "SC",
+      "RKMP",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "20:00|20:00",
+      "22:40|22:50",
+      "08:40|08:50",
+      "12:15|12:15"
+    ],
+    "totalDistanceKm": 3135,
+    "totalDurationStr": "40h 15m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12801",
+    "trainName": "Purushottam Express",
+    "stationCodes": [
+      "PURI",
+      "BBS",
+      "GAYA",
+      "PNBE",
+      "CNB",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "21:55|21:55",
+      "23:35|23:45",
+      "07:20|07:30",
+      "09:00|09:10",
+      "14:40|14:50",
+      "04:00|04:00"
+    ],
+    "totalDistanceKm": 1777,
+    "totalDurationStr": "30h 5m",
+    "speed": 85
+  },
+  {
+    "trainNumber": "12925",
+    "trainName": "Paschim Express",
+    "stationCodes": [
+      "MMCT",
+      "ST",
+      "BRC",
+      "RTM",
+      "NDLS",
+      "AMB",
+      "LDH",
+      "ASR"
+    ],
+    "scheduledTimes": [
+      "11:25|11:25",
+      "13:40|13:45",
+      "15:30|15:40",
+      "17:20|17:25",
+      "05:10|05:10",
+      "07:30|07:35",
+      "08:40|08:45",
+      "20:10|20:10"
+    ],
+    "totalDistanceKm": 1920,
+    "totalDurationStr": "32h 45m",
+    "speed": 88
+  },
+  {
+    "trainNumber": "11041",
+    "trainName": "Chennai Express",
+    "stationCodes": [
+      "CSMT",
+      "PUNE",
+      "SC",
+      "MAS"
+    ],
+    "scheduledTimes": [
+      "14:35|14:35",
+      "17:15|17:25",
+      "05:00|05:10",
+      "15:15|15:15"
+    ],
+    "totalDistanceKm": 1279,
+    "totalDurationStr": "24h 40m",
+    "speed": 80
+  },
+  {
+    "trainNumber": "12137",
+    "trainName": "Punjab Mail",
+    "stationCodes": [
+      "CSMT",
+      "RKMP",
+      "NDLS",
+      "AMB",
+      "LDH",
+      "FZR"
+    ],
+    "scheduledTimes": [
+      "19:35|19:35",
+      "07:00|07:10",
+      "17:00|17:00",
+      "19:45|19:50",
+      "21:00|21:05",
+      "05:10|05:10"
+    ],
+    "totalDistanceKm": 2496,
+    "totalDurationStr": "33h 35m",
+    "speed": 85
+  },
+  {
+    "trainNumber": "12123",
+    "trainName": "Deccan Queen Express",
+    "stationCodes": [
+      "CSMT",
+      "PUNE"
+    ],
+    "scheduledTimes": [
+      "17:10|17:10",
+      "20:25|20:25"
+    ],
+    "totalDistanceKm": 192,
+    "totalDurationStr": "3h 15m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12021",
+    "trainName": "Howrah Shatabdi Express",
+    "stationCodes": [
+      "HWH",
+      "PNBE",
+      "GAYA",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "05:55|05:55",
+      "07:40|07:50",
+      "09:15|09:25",
+      "19:55|19:55"
+    ],
+    "totalDistanceKm": 1445,
+    "totalDurationStr": "14h 0m",
+    "speed": 110
+  },
+  {
+    "trainNumber": "12505",
+    "trainName": "Northeast Express",
+    "stationCodes": [
+      "GHY",
+      "PNBE",
+      "CNB",
+      "NDLS"
+    ],
+    "scheduledTimes": [
+      "19:30|19:30",
+      "08:00|08:10",
+      "14:05|14:15",
+      "10:00|10:00"
+    ],
+    "totalDistanceKm": 1900,
+    "totalDurationStr": "38h 30m",
+    "speed": 80
+  },
+  {
+    "trainNumber": "20503",
+    "trainName": "Arunachal Express Rajdhani",
+    "stationCodes": [
+      "NHL",
+      "GHY",
+      "PNBE",
+      "CNB",
+      "ANVT"
+    ],
+    "scheduledTimes": [
+      "12:15|12:15",
+      "15:00|15:10",
+      "05:00|05:10",
+      "11:00|11:10",
+      "17:00|17:00"
+    ],
+    "totalDistanceKm": 2085,
+    "totalDurationStr": "28h 45m",
+    "speed": 95
+  },
+  {
+    "trainNumber": "12059",
+    "trainName": "Kota Jan Shatabdi Express",
+    "stationCodes": [
+      "KOTA",
+      "SWM",
+      "MTJ",
+      "NZM"
+    ],
+    "scheduledTimes": [
+      "06:15|06:15",
+      "07:25|07:27",
+      "10:30|10:32",
+      "12:25|12:25"
+    ],
+    "totalDistanceKm": 460,
+    "totalDurationStr": "6h 10m",
+    "speed": 100
+  },
+  {
+    "trainNumber": "12311",
+    "trainName": "Netaji Express (Kalka Mail)",
+    "stationCodes": [
+      "HWH",
+      "GAYA",
+      "PNBE",
+      "NDLS",
+      "AMB",
+      "KLK"
+    ],
+    "scheduledTimes": [
+      "21:55|21:55",
+      "01:35|01:45",
+      "03:10|03:20",
+      "17:00|17:00",
+      "20:40|20:45",
+      "03:00|03:00"
+    ],
+    "totalDistanceKm": 1937,
+    "totalDurationStr": "29h 5m",
+    "speed": 88
+  },
+  {
+    "trainNumber": "16022",
+    "trainName": "Kaveri Express",
+    "stationCodes": [
+      "SBC",
+      "MAS"
+    ],
+    "scheduledTimes": [
+      "07:00|07:00",
+      "11:45|11:45"
+    ],
+    "totalDistanceKm": 360,
+    "totalDurationStr": "4h 45m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "12027",
+    "trainName": "Chennai Shatabdi Express",
+    "stationCodes": [
+      "MAS",
+      "MYS"
+    ],
+    "scheduledTimes": [
+      "06:00|06:00",
+      "10:40|10:40"
+    ],
+    "totalDistanceKm": 498,
+    "totalDurationStr": "4h 40m",
+    "speed": 120
+  },
+  {
+    "trainNumber": "12685",
+    "trainName": "Mangalore Express",
+    "stationCodes": [
+      "MAS",
+      "ERS",
+      "MAQ"
+    ],
+    "scheduledTimes": [
+      "21:45|21:45",
+      "06:00|06:10",
+      "13:00|13:00"
+    ],
+    "totalDistanceKm": 771,
+    "totalDurationStr": "15h 15m",
+    "speed": 80
+  },
+  {
+    "trainNumber": "12601",
+    "trainName": "Mangalore Mail",
+    "stationCodes": [
+      "MAS",
+      "ERS",
+      "MAQ"
+    ],
+    "scheduledTimes": [
+      "21:00|21:00",
+      "05:20|05:30",
+      "11:10|11:10"
+    ],
+    "totalDistanceKm": 771,
+    "totalDurationStr": "14h 10m",
+    "speed": 82
+  },
+  {
+    "trainNumber": "12167",
+    "trainName": "Varanasi Express",
+    "stationCodes": [
+      "LTT",
+      "RKMP",
+      "ALD",
+      "BSB"
+    ],
+    "scheduledTimes": [
+      "11:00|11:00",
+      "22:00|22:10",
+      "03:00|03:10",
+      "05:30|05:30"
+    ],
+    "totalDistanceKm": 1497,
+    "totalDurationStr": "18h 30m",
+    "speed": 90
+  },
+  {
+    "trainNumber": "11201",
+    "trainName": "Narmada Express",
+    "stationCodes": [
+      "CSMT",
+      "RKMP",
+      "JBP"
+    ],
+    "scheduledTimes": [
+      "22:25|22:25",
+      "08:00|08:10",
+      "17:00|17:00"
+    ],
+    "totalDistanceKm": 979,
+    "totalDurationStr": "18h 35m",
+    "speed": 80
+  },
+  {
+    "trainNumber": "12921",
+    "trainName": "Flying Ranee Express",
+    "stationCodes": [
+      "MMCT",
+      "ST"
+    ],
+    "scheduledTimes": [
+      "09:25|09:25",
+      "13:05|13:05"
+    ],
+    "totalDistanceKm": 263,
+    "totalDurationStr": "3h 40m",
+    "speed": 100
+  },
+  {
+    "trainNumber": "19019",
+    "trainName": "Dehradun Express",
+    "stationCodes": [
+      "MMCT",
+      "BRC",
+      "RTM",
+      "NDLS",
+      "DDN"
+    ],
+    "scheduledTimes": [
+      "19:00|19:00",
+      "21:40|21:50",
+      "23:40|23:45",
+      "11:40|11:40",
+      "07:30|07:30"
+    ],
+    "totalDistanceKm": 1510,
+    "totalDurationStr": "36h 30m",
+    "speed": 75
+  },
+  {
+    "trainNumber": "11071",
+    "trainName": "Kamayani Express",
+    "stationCodes": [
+      "CSMT",
+      "RKMP",
+      "ALD",
+      "BSB",
+      "PNBE"
+    ],
+    "scheduledTimes": [
+      "23:15|23:15",
+      "11:10|11:20",
+      "18:00|18:10",
+      "20:00|20:10",
+      "05:30|05:30"
+    ],
+    "totalDistanceKm": 1536,
+    "totalDurationStr": "30h 15m",
+    "speed": 78
+  },
+  {
+    "trainNumber": "12909",
+    "trainName": "Garib Rath Express (Mumbai-Patna)",
+    "stationCodes": [
+      "BDTS",
+      "RKMP",
+      "ALD",
+      "PNBE"
+    ],
+    "scheduledTimes": [
+      "12:05|12:05",
+      "23:00|23:10",
+      "04:00|04:10",
+      "10:50|10:50"
+    ],
+    "totalDistanceKm": 1463,
+    "totalDurationStr": "22h 45m",
+    "speed": 90
+  }
+]

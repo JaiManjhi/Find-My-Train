@@ -1,0 +1,59 @@
+[
+  {
+    "distanceKm": 0,
+    "elevationM": 12,
+    "stationName": "MMCT"
+  },
+  {
+    "distanceKm": 30,
+    "elevationM": 14,
+    "stationName": "BVI"
+  },
+  {
+    "distanceKm": 150,
+    "elevationM": 25
+  },
+  {
+    "distanceKm": 263,
+    "elevationM": 13,
+    "stationName": "ST"
+  },
+  {
+    "distanceKm": 393,
+    "elevationM": 36,
+    "stationName": "BRC"
+  },
+  {
+    "distanceKm": 500,
+    "elevationM": 220
+  },
+  {
+    "distanceKm": 652,
+    "elevationM": 480,
+    "stationName": "RTM (Peak Elevation)"
+  },
+  {
+    "distanceKm": 780,
+    "elevationM": 350
+  },
+  {
+    "distanceKm": 918,
+    "elevationM": 256,
+    "stationName": "KOTA"
+  },
+  {
+    "distanceKm": 1026,
+    "elevationM": 275,
+    "stationName": "SWM"
+  },
+  {
+    "distanceKm": 1244,
+    "elevationM": 177,
+    "stationName": "MTJ"
+  },
+  {
+    "distanceKm": 1384,
+    "elevationM": 214,
+    "stationName": "NDLS"
+  }
+]
